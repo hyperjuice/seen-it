@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>InterviewLive</title>
+  <title>Seen-It</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+	<!-- top navbar -->
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -15,7 +17,9 @@
 				</div>	
 			</div>
 		</div>
-	</div>	
+	</div>
+
+	<!-- bottom navbar -->
 	<div class="navbar navbar-fixed-bottom">
 		<div class="navbar-inner">
 			<div class="container">
@@ -26,12 +30,11 @@
 				</ul>	
 			</div>
 		</div>
-	</div>	
+	</div>
+
 	<div class="container">
 		<p class="notice"><%= notice %></p>
     	<p class="alert"><%= alert %></p>
-
-	
 
 <%= yield %>
 	</div>
