@@ -14,7 +14,6 @@
 			<ul class="nav">
 				<li><%= link_to "all posts", posts_path %></li>
 				<li><%= link_to 'about', about_path %></li>
-				<li><%= render 'devise/menu/login_items' %></li>
 			</div>
 		</div>
 	</div>	
@@ -22,6 +21,10 @@
 		<p class="notice"><%= notice %></p>
     	<p class="alert"><%= alert %></p>
 
+	# layouts/application.html.erb
+	<ul class="hmenu">
+	  <%= render 'devise/menu/login_items' %>
+	</ul>
 
 <%= yield %>
 	</div>
