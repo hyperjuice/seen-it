@@ -7,8 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+	<div class="navbar navbar-fixed-bottom">
+		<div class="navbar-inner">
+			<div class="container">
+			<a href="#" class="brand"> interview questions</a>
+			<ul class="nav">
+				<li><%= link_to "all posts", posts_path %></li>
+			</div>
+		</div>
+	</div>	
+	<div class="container">
 <%= yield %>
+	</div>
 
 </body>
 </html>
