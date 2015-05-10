@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get '/about' => 'about#index'
-
   devise_for :users
   resources :posts
   root to: 'posts#index'
