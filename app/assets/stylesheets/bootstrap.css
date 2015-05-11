@@ -809,6 +809,10 @@ h4 small {
   border-bottom: 1px solid #eeeeee;
 }
 
+#nobullets ul li {
+  list-style: none;
+}
+
 ul,
 ol {
   padding: 0;
@@ -3875,6 +3879,7 @@ input[type="submit"].btn.btn-mini {
 
 .alert {
   padding: 8px 35px 8px 14px;
+  margin-top: 20px;
   margin-bottom: 20px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   background-color: #fcf8e3;
