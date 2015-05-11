@@ -1,4 +1,5 @@
 <!-- add sign_in/out links, so the appropriate one will show up depending on whether the user is already signed in -->
+<!-- add 'hi' to navbar to identify logged in user -->
 
 <% if user_signed_in? %>
   <div id="nobullets">
@@ -7,15 +8,15 @@
 		  	Hi, <%= current_user.email %>
 		  </li>
 		  <li>
-		  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+		  <%= link_to('logout', destroy_user_session_path, :method => :delete) %>        
 		  </li>
 	  </ul>
 	</div>  
 <% else %>
   <li>
-  	<%= link_to('Login', new_user_session_path)  %>
+  	<%= link_to('login', new_user_session_path)  %>
 	</li>
   <li>
-  	<%= link_to('Sign up', new_user_registration_path) %>
+  	<%= link_to('sign up', new_user_registration_path) %>
   </li>
 <% end %>
