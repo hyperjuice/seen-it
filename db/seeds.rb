@@ -10,3 +10,5 @@ life_question = Post.create({name:"What is the meaning of life?",content:"Write 
 
 non_technical = Tag.create({category:"non-technical"})
 
+chris = User.create({first_name:"Chris",last_name:"Reeve",email:"pln2bz@vireo.net", encrypted_password: "$2a$10$1WosUHld0s/R20cN9dVwc.8xZVTHh68Dikwvfvt9PR/71b1/T3Fqy"})
+
