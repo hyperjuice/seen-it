@@ -106,6 +106,9 @@ namespace :scraper do
 		   		puts tag.text.gsub(/\n/," ").strip
 		   	end
 
+	        # Add in a scraper delay with a minimum of 5s
+	        sleep(5 + Random.rand(10))
+
 		   	justthree = justthree + 1
 		  end
 

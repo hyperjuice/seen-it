@@ -64,7 +64,7 @@ namespace :scraper do
     justthree = 0
     # Now grab each question from the linked pages
     questions.each do |question|
-    	if justthree < 1
+    	if justthree < 3
 
     		# Grab the page at the link
 		   	question_doc = Nokogiri::HTML(open(question[:link]))
@@ -88,6 +88,9 @@ namespace :scraper do
 				# particularly important
 
    			question[:question] = p_tags.to_s
+
+            # Add in a scraper delay with a minimum of 5s
+            sleep(5 + Random.rand(10))
 
 	   		justthree = justthree + 1
 	  	end

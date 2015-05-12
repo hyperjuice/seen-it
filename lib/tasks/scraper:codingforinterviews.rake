@@ -39,7 +39,7 @@ namespace :scraper do
     justthree = 0
     questions.each do |question|
     	# comment out the following line for production
-    	if justthree < 1
+    	if justthree < 3
 
     		# Grab the page at the link
 		   	question_doc = Nokogiri::HTML(open(question[:link]))
@@ -87,6 +87,9 @@ namespace :scraper do
 		   	# should all be added to the QuestionTag join 
 		   	# table, which will have a row for each
 		   	# question-tag association
+
+        # Add in a scraper delay with a minimum of 5s
+        sleep(5 + Random.rand(10))
 
 		   	justthree = justthree + 1
 		  end
