@@ -7,18 +7,18 @@ class PostPolicy < ApplicationPolicy
   end
 
   def show?
-    post.user_id == user.try(:id)
+    true
   end
 
   def edit?
-    show?
+    post.user_id == user.try(:id)
   end
 
   def update?
-  	show?
+  	post.user_id == user.try(:id)
   end
 
   def destroy?
-    show?
+    post.user_id == user.try(:id)
   end
 end
