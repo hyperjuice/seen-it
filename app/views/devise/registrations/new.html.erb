@@ -2,26 +2,32 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
+ 
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
   
-  <br />
-  <div><%= f.label :first_name %>
-    <%= f.text_field :first_name %></div>
-  
-  <br />
-  <div><%= f.label :last_name %>
-    <%= f.text_field :last_name %></div>
-  
-  <br />
-  <div><%= f.label :profile_name %>
-    <%= f.text_field :profile_name %></div>
 
-  <br />
+  <div class="field">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+  </div>
+  
+ 
+  <div class="field">
+    <%= f.label :profile_name %>
+    <%= f.text_field :profile_name %>
+  </div>
+
+  
   <div class="field">
     <%= f.label :email %>
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <br />
+  
   <div class="field">
     <%= f.label :password %>
     <% if @validatable %>
