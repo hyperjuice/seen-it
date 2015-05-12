@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   get '/about' => 'about#index'
   devise_for :users
-  resources :posts
+  resources :posts do
+  member do
+    put "like", to: "posts#upvote"
+    put "dislike", to: "posts#downvote"
+  end
+end 
+
   root to: 'posts#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
