@@ -9,6 +9,10 @@ namespace :scraper do
 		require 'open-uri'
 
     # 1. Go to URL
+    # NOTE THAT SOME OF THESE PROBLEMS WILL REQUIRE DATA-
+    # MASSAGING AS THE QUESTIONS ARE NOT IN THE SAME CONSISTENT
+    # LOCATION
+
     main_doc = Nokogiri::HTML(open("http://www.geeksforgeeks.org/top-25-interview-questions/"))
 
     # 2. Collect all interview question links

@@ -63,7 +63,8 @@ namespace :scraper do
 		   	# Questions are accessible on these pages by
 		   	# looking at the paragraph tags inside of the
 		   	# question-content class
-	  	 	question[:name] = question_doc.css('.question-content p').to_s
+
+	  	 	# question[:content] = question_doc.css('.question-content p').to_s
 
 	  	 	# These should be added together to form one
 	  	 	# single interview question, but not if it's a
@@ -91,7 +92,7 @@ namespace :scraper do
 		  	 		puts p.to_s
 		  	 		# puts p.content.gsub(/\n/," ").strip
 
-		  	 		question[:content] = p
+		  	 		question[:content] = p.to_s
 	  	 	end
 
 	  	 	# Tags are in hyperlinks in a span within the
