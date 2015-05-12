@@ -28,9 +28,9 @@ namespace :scraper do
     questions = Array.new
 
     main_doc.css(link_selector).each do |link|
-	    questions.push( { :title => link.content,
+	    questions.push( { :name => link.content,
 	    	:link => "http://www.glassdoor.com/blog/common-interview-questions/", :difficulty => "",
-	    	:question => link.content } )
+	    	:content => link.content } )
     end
 
     # Create tags that all say "non-technical", 

@@ -29,9 +29,9 @@ namespace :scraper do
 
     # Populate hash with list
     main_doc.css(link_selector).each do |link|
-	    questions.push( { :title => link.content,
+	    questions.push( { :name => link.content,
 	    	:link => link["href"], :difficulty => "",
-	    	:question => "" } )
+	    	:content => "" } )
     end
 
     # Selector determined with SelectorGadget s/w
@@ -63,7 +63,7 @@ namespace :scraper do
 		   	# Questions are accessible on these pages by
 		   	# looking at the paragraph tags inside of the
 		   	# question-content class
-	  	 	question[:question] = question_doc.css('.question-content p').to_s
+	  	 	question[:name] = question_doc.css('.question-content p').to_s
 
 	  	 	# These should be added together to form one
 	  	 	# single interview question, but not if it's a
@@ -90,6 +90,8 @@ namespace :scraper do
 	  	 	question_doc.css('.question-content p').each do |p|
 		  	 		puts p.to_s
 		  	 		# puts p.content.gsub(/\n/," ").strip
+
+		  	 		question[:content] = p
 	  	 	end
 
 	  	 	# Tags are in hyperlinks in a span within the

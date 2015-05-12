@@ -40,9 +40,9 @@ namespace :scraper do
         # then create a new question
 
         if link.text[numbered_list]
-    	    questions.push( { :title => actual_text[1],
+    	    questions.push( { :name => actual_text[1],
     	    	:difficulty => "", :link => "http://www.geeksforgeeks.org/top-25-interview-questions/",
-    	    	:question => link.content } )
+    	    	:content => link.content } )
 
         # Do nothing for last two lines
         elsif link.text[/^(Thanks)|(This)/]
@@ -50,7 +50,7 @@ namespace :scraper do
         # Otherwise, concatenate the content to 
         # the former question.
         else
-            questions[questions.length-1][:question] += link.to_s
+            questions[questions.length-1][:content] += link.to_s
         end
     end
 

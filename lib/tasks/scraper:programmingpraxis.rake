@@ -54,9 +54,9 @@ namespace :scraper do
 			# tag within this current table column (td)
 			href = "http://programmingpraxis.com" + td.at_css("a")[:href]
 
-	    questions.push( { :title => td.text,
+	    questions.push( { :name => td.text,
 	    	:link => href, :difficulty => "",
-	    	:question => "" } )
+	    	:content => "" } )
 
 	    current_tr = current_tr.next_element
     end until !current_tr.text[end_tr].nil?
@@ -87,7 +87,7 @@ namespace :scraper do
 				# going to leave it there.  It's not
 				# particularly important
 
-   			question[:question] = p_tags.to_s
+   			question[:content] = p_tags.to_s
 
             # Add in a scraper delay with a minimum of 5s
             sleep(5 + Random.rand(10))

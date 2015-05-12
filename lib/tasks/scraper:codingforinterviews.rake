@@ -29,9 +29,9 @@ namespace :scraper do
 
     # Populate hash with list
     main_doc.css(link_selector).each do |link|
-	    questions.push( { :title => link.content,
+	    questions.push( { :name => link.content,
 	    	:link => link["href"], :difficulty => "",
-	    	:question => "" } )
+	    	:content => "" } )
     end
 
     # Testing with a limited loop of the first 3 entries,
@@ -73,7 +73,7 @@ namespace :scraper do
 		   		current_element = current_element.next_sibling
    			end until !current_element.text[end_h2].nil?
 
-		   	question[:question] = grab_html
+		   	question[:content] = grab_html
 
 		   	# On this site, last week's solution is on the same
 		   	# page as this week's problem.  So, I should be
