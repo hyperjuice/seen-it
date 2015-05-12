@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+life_question = Post.create({name:"What is the meaning of life?",content:"Write a program that outputs 42",difficulty:"Easy",link:"http://www.google.com"})
+
+non_technical = Tag.create({category:"non-technical"})
+

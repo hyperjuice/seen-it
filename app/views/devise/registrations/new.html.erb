@@ -2,22 +2,26 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
-  <div><%= f.label :first_name %><br />
+  
+  <br />
+  <div><%= f.label :first_name %>
     <%= f.text_field :first_name %></div>
   
-  <div><%= f.label :last_name %><br />
+  <br />
+  <div><%= f.label :last_name %>
     <%= f.text_field :last_name %></div>
   
-  <div><%= f.label :profile_name %><br />
+  <br />
+  <div><%= f.label :profile_name %>
     <%= f.text_field :profile_name %></div>
 
-
+  <br />
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true %>
   </div>
 
+  <br />
   <div class="field">
     <%= f.label :password %>
     <% if @validatable %>
@@ -26,8 +30,9 @@
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
+  <br />
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
@@ -35,5 +40,3 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
