@@ -1,3 +1,7 @@
+<% @post.tags.each do |tag| %>
+<p><%= tag.category %></p>
+<% end %>
+
 <p>
   <strong>name:</strong>
   <%= @post.name %>
