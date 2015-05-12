@@ -22,7 +22,12 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    posts = Post.all.sort_by do |post|
+      post.get_upvotes.size
+    end
+
+    @posts = posts.reverse
+
   end
 
   # GET /posts/1
