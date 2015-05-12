@@ -16,6 +16,11 @@
       <%= link_to("Edit", edit_post_path(post)) if policy(post).edit? %> | 
       <%= link_to("Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete"}) if policy(post).destroy? %> 
     </span>
+
+  <div class="votes">
+     <%= link_to "Upvote", like_post_path(post), method: :put %>
+     <%= link_to "Downvote", dislike_post_path(post), method: :put %>
+  </div>
   </div>
 </div>
 <% end %>
