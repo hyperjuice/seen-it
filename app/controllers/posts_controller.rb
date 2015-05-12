@@ -5,6 +5,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   
+  def score
+    self.get_upvotes.size - self.get_downvotes.size
+  end
   def upvote
     @post = Post.find(params[:id])
     @post.liked_by current_user
