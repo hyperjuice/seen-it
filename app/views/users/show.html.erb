@@ -1,1 +1,13 @@
 <%= @user.email %>
+
+<%= form_for @picture, :html => { :multipart => true } do |form| %>
+  <%= form.hidden_field :user_id, value: @user.id %>
+  <%= form.file_field :file %>
+  <%= form.submit 'submit' %>
+<% end %>
+
+<h2>Profile Picture</h2>
+
+<% @user.pictures.each do |picture| %>
+	<%= image_tag picture.file.url(:medium) %>
+<% end %>
