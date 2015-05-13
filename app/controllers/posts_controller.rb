@@ -49,12 +49,12 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+
+    # tag creation action
     tag_params = {category: params[:post][:tag]}
     tag = Tag.create(tag_params)
- #   byebug
 
     # POST associated with logged in current_user
-    p post_params
     @post = current_user.posts.build(post_params)
     respond_to do |format|
       if @post.save
@@ -62,7 +62,7 @@ class PostsController < ApplicationController
         format.html { redirect_to @post, notice: 'Post was successfully created' }
         format.json { render :show, status: :created, location: @post }
       else
-             @post.tags << tag
+        @post.tags << tag
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
