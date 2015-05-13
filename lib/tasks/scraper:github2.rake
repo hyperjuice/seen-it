@@ -41,8 +41,8 @@ namespace :scraper do
 	    	:content => link.content } )
     end
 
-    # Questions 0-18 should be tagged "general"
-    # Questions 19-31 should be tagged "html"
+    # Questions 0-14 should be tagged "general" "non-technical"
+    # Questions 15- should be tagged "html"
     # Questions 32-62 should be tagged "css"
     # Questions 63-97 should be tagged "javascript"
     # Questions 98-101 should be tagged "testing"

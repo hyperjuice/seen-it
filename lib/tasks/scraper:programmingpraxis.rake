@@ -1,3 +1,5 @@
+# WORKING!
+
 namespace :scraper do
 
   desc "Scrape the Programming Praxis site,
@@ -62,10 +64,10 @@ namespace :scraper do
 	    current_tr = current_tr.next_element
     end until !current_tr.text[end_tr].nil?
 
-    justthree = 0
+    # justthree = 0
     # Now grab each question from the linked pages
     questions.each do |question|
-    	if justthree < 3
+    	# if justthree < 3
 
     		# Grab the page at the link
 		   	question_doc = Nokogiri::HTML(open(question[:link], "User-Agent" => browser))
@@ -90,19 +92,18 @@ namespace :scraper do
 
    			question[:content] = p_tags.to_s
 
-            # Add in a scraper delay with a minimum of 5s
-            sleep(5 + Random.rand(10))
+        # Add in a scraper delay with a minimum of 5s
+        sleep(5 + Random.rand(10))
 
-	   		justthree = justthree + 1
-	  	end
+        current = Post.create(question)
+
+        # Monitor the progress
+        puts current
+
+	   # 		justthree = justthree + 1
+	  	# end
 
 	  end
-
-    # Test-print the hash array ...
-    puts "QUESTION OBJECT:"
-    questions.each do |question|
-    	puts question.inspect
-    end
 
 	end
 

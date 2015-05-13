@@ -1,3 +1,5 @@
+# WORKING!
+
 namespace :scraper do
 
   desc "Scrape a Top 25 List of technical q's
@@ -59,24 +61,9 @@ namespace :scraper do
         end
     end
 
-    # Create tags that all say "non-technical", 
-    # "general", "opinion: top 25"
-
-    # Create tags that all say "general", 
-    # "data structures"
-    general = Tag.find_by(category: 'general')
-    if general.nil?
-      general = Tag.create(category: 'general')
-    else
-      puts "general already exists ..."
-    end
-
-    non_technical = Tag.find_by(category: 'non-technical')
-    if non_technical.nil?
-      non_technical = Tag.create({category: 'non-technical'})
-    else
-      puts "non-technical already exists ..."
-    end
+    # Not going to add tags for these q's
+    # because they are not any single
+    # category
 
     puts "There are #{questions.count} questions in the question object ..."
 
@@ -87,8 +74,6 @@ namespace :scraper do
         puts "\n"
 
         current = Post.create(question)
-        current.tags << general
-        current.tags << non_technical
     end
 
   end

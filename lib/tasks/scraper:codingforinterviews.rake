@@ -1,3 +1,5 @@
+# WORKING!
+
 namespace :scraper do
 
   desc "Scrape the Coding for Interviews Archive
@@ -39,7 +41,7 @@ namespace :scraper do
     # "data structures"
     algorithms = Tag.find_by(category: 'algorithms')
     if algorithms.nil?
-      algorithms = Tag.create(category: 'algorithms')
+      algorithms = Tag.create({category: 'algorithms'})
     else
       puts "algorithms already exists ..."
     end

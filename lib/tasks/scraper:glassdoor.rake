@@ -1,3 +1,5 @@
+# WORKING!
+
 namespace :scraper do
 
   desc "Scrape 50 most common (non-technical) interview questions from http://www.glassdoor.com/blog/common-interview-questions/"
@@ -38,7 +40,7 @@ namespace :scraper do
     # "general"
     non_technical = Tag.find_by(category: 'non-technical')
     if non_technical.nil?
-      non_technical = Tag.create(category: 'non-technical')
+      non_technical = Tag.create({category: 'non-technical'})
     else
       puts "non-technical already exists ..."
     end
