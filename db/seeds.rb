@@ -1,6 +1,25 @@
+# ADMIN User Account
+
 User.create!([
   {first_name: nil, last_name: nil, profile_name: nil, email: "pln2bz@vireo.net", encrypted_password: "$2a$10$1WosUHld0s/R20cN9dVwc.8xZVTHh68Dikwvfvt9PR/71b1/T3Fqy", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-05-12 19:10:15", last_sign_in_at: "2015-05-12 19:10:15", current_sign_in_ip: "::1", last_sign_in_ip: "::1"}
 ])
+
+
+
+
+# TAGS
+
+Tag.create!([
+  {category: "non-technical", post_id: 1},
+  {category: "general", post_id: nil},
+  {category: "algorithms", post_id: 94},
+  {category: "data structures", post_id: 94}
+])
+
+
+
+
+# INTERVIEW QUESTIONS (aka Posts)
 
 # codingforinterviews.com site
 # Note that the format is in HTML and the question
@@ -49,9 +68,106 @@ Post.create!([
   {name: "Issue 20: Breadth-First Search", content: "\n\n<p>Breadth-first search is a tree traversal algorithm that visits the nodes of a tree <strong>level by level</strong>, increasing the depth after each row's traversal.</p>\n\n<h2>What is BFS used for?</h2>\n\n<p>You'll come across BFS in a few common situations—</p>\n\n<ol>\n<li>finding the <strong>shortest path</strong> between two nodes in a graph—like LinkedIn finding the friends-of-friends.</li>\n<li>\n<strong>filesystem traversal</strong>—while UNIX find is a pre-order depth-first search, some prefer breadth-first for faster searches in certain situations (<a href=\"https://groups.google.com/forum/#!topic/gnu.emacs.sources/cpetntP4Ziw\">like this Emacs-er from 1999</a>)</li>\n<li>generally <strong>printing hierarchies</strong> in rank-order... e.g., if you wanted to print a tree of military officers by their level in the rank hierarchy</li>\n</ol>\n\n<h2>What does it look like?</h2>\n\n<p><a href=\"http://www.youtube.com/watch?v=Ug2hLQv6WeY\">Pop quiz, hot-shot</a>! You have a tree. And your task is to verbally breadth-first traverse it. What do you do?</p>\n\n<p><img src=\"http://i.imgur.com/CdYi6qm.png\"></p>\n\n<p>Well, a breadth-first printing of the tree would be <code>1 2 3 4 5</code>. Each row, you visit the nodes from left to right.</p>\n\n<h2>How do you perform a BFS?</h2>\n\n<p>When you’re performing a breadth-first traversal, you need some sort of way to keep track of where you’ve been (otherwise, looking at a given node, you wouldn’t know which node to visit next).</p>\n\n<p>One way is to <strong>use a queue</strong> to maintain a list of nodes to visit next, remove the nodes and their add children to the end of the queue as you visit them.</p>\n\n<p>The general steps:</p>\n\n<ol>\n<li>\n<strong>Add the root node</strong> to the queue</li>\n<li>While there are still any nodes in the queue:\n\n<ul>\n<li>\n<strong>Remove and visit</strong> the front node in the queue</li>\n<li>\n<strong>Add</strong> each of the current node's <strong>children</strong> to the queue</li>\n</ul>\n</li>\n</ol>\n\n<p>Here's an animated version (from <a href=\"http://en.wikipedia.org/wiki/Breadth-first_search\">Wikipedia on BFS</a>)—<strong><font color=\"gray\">gray nodes</font></strong> are the ones remaining in the queue. <strong>Black nodes</strong> are the ones which have been visited.</p>\n\n<p><img src=\"http://i.imgur.com/dkdJzSx.gif\"></p>\n\n<h3>BFS -&gt; DFS with just one swap</h3>\n\n<p>If you <strong>swap out the queue</strong> in that algorithm <strong>for a stack</strong>, you'd get a depth-first search. Can you wrap your head around why that is?</p>\n\n<h3>In graphs to avoid cycles</h3>\n\n<p>Unlike trees, graphs can have <strong>cycles</strong>—paths from a given node around to itself. When you're performing a breadth-first search of a graph, you will want to avoid getting caught up in these cycles, as they can cause the algorithm to never terminate (though, unlike depth-first searches, it will continue to traverse the entire graph).</p>\n\n<p>To counter this, a common approach is to <strong>mark visited graph nodes</strong> as you go along and ignore them when encountered later. This marking can be done either as an attribute on the node or by maintaining a set of visited nodes.</p>\n\n<h1>This week's challenge: The Sta<i>queue</i>\n</h1>\n\n<p>This week's challenge—not directly related to BFS—is to <strong>implement a queue using two stacks</strong>.</p>\n\n<p><em>Queues</em> are a <strong>first-in-first-out</strong> data structure that we just saw used as a \"next to visit\" data store in breadth-first search.</p>\n\n<p><em>Stacks</em> are a <strong>last-in-first-out</strong> data structure used in depth-first search, and can often be used to implement recursive algorithms iteratively (because the call stack is, itself, a stack).</p>\n\n<p>For this problem, you are to create a queue using two stacks. So your <code>Queue</code> will support the operations:</p>\n\n<ul>\n<li>\n<code>enqueue(item)</code>, which inserts an item into the queue</li>\n<li>\n<code>dequeue()</code>, which removes and returns the oldest item in the queue</li>\n</ul>\n\n<p>Your two <code>Stack</code>s (which your programming language may have available already, otherwise you can create your own pretty easily) have the following operations:</p>\n\n<ul>\n<li>\n<code>push(item)</code>, which inserts an item at the top of the stack</li>\n<li>\n<code>pop()</code>, which removes and returns the top item of the stack</li>\n</ul>\n\n<p>Let's say we just tried using one stack as a queue, pushing instead of enqueueing:</p>\n\n<p><img src=\"http://i.imgur.com/WwEoOmI.gif\" width=\"200/\"></p>\n\n<p>Not so easy! (BTW—we'll see the wonderful source of these animations with next week's solutions).</p>\n\n<p><strong>Can you figure out a way to make a queue using two stacks?</strong> Give it a shot, if you get stuck, try drawing some pictures or working through sample inputs with your work-in-progress. Good luck!</p>\n\n<p><strong>Time complexity</strong>: what is the time complexity of your solution? An <code>O(m)</code> solution is possible, where <code>m</code> is the number of enqueue and dequeue operations performed. Can you figure one out? Hint—does it matter if an operation is expensive the first time you do it, and then really cheap afterwards?</p>\n\n<p><strong>Bonus points</strong> for solutions with visualizations!</p>\n\n<p><strong>Extra bonus followup</strong>: Use your fancy new <code>Queue</code> to hold integers, but now add an <code>O(1)</code> time <code>getMinimum</code> operation, which returns the smallest integer in the queue. What are the extra space requirements for this operation?</p>\n\n<p><em>Thanks to group members Asim Ihsan, Andrew Yates and Greg Jordan for their feedback on this issue!</em></p>\n\n", user_id: nil, difficulty: "", link: "http://codingforinterviews.com/archive/paradigmsareconstructed@gmail.com-1bc404/issue/20", tag_id: nil}
 ])
 
-Tag.create!([
-  {category: "non-technical", post_id: 1},
-  {category: "general", post_id: nil},
-  {category: "algorithms", post_id: 94},
-  {category: "data structures", post_id: 94}
+# glassdoor.com
+
+Post.create!([
+  {name: "What are your strengths?", content: "What are your strengths?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What are your weaknesses?", content: "What are your weaknesses?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Why are you interested in working for [insert company name here]?", content: "Why are you interested in working for [insert company name here]?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Where do you see yourself in five years? Ten years?", content: "Where do you see yourself in five years? Ten years?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Why do you want to leave your current company?", content: "Why do you want to leave your current company?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Why was there a gap in your employment between [insert date] and [insert date]?", content: "Why was there a gap in your employment between [insert date] and [insert date]?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What can you offer us that someone else can not?", content: "What can you offer us that someone else can not?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What are three things your former manager would like you to improve on?", content: "What are three things your former manager would like you to improve on?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Are you willing to relocate?", content: "Are you willing to relocate?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Are you willing to travel?", content: "Are you willing to travel?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Tell me about an accomplishment you are most proud of.", content: "Tell me about an accomplishment you are most proud of.", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Tell me about a time you made a mistake.", content: "Tell me about a time you made a mistake.", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What is your dream job?", content: "What is your dream job?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "How did you hear about this position?", content: "How did you hear about this position?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What would you look to accomplish in the first 30 days/60 days/90 days on the job?", content: "What would you look to accomplish in the first 30 days/60 days/90 days on the job?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Discuss your resume.", content: "Discuss your resume.", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Discuss your educational background.", content: "Discuss your educational background.", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Describe yourself.", content: "Describe yourself.", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Tell me how you handled a difficult situation.", content: "Tell me how you handled a difficult situation.", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Why should we hire you?", content: "Why should we hire you?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Why are you looking for a new job?", content: "Why are you looking for a new job?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Would you work holidays/weekends?", content: "Would you work holidays/weekends?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "How would you deal with an angry or irate customer?", content: "How would you deal with an angry or irate customer?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What are your salary requirements? (Hint: if you’re not sure what’s a fair salary range and compensation package, research the job title and/or company on Glassdoor.)", content: "What are your salary requirements? (Hint: if you’re not sure what’s a fair salary range and compensation package, research the job title and/or company on Glassdoor.)", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Give a time when you went above and beyond the requirements for a project.", content: "Give a time when you went above and beyond the requirements for a project.", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Who are our competitors?", content: "Who are our competitors?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What was your biggest failure?", content: "What was your biggest failure?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What motivates you?", content: "What motivates you?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What’s your availability?", content: "What’s your availability?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Who’s your mentor?", content: "Who’s your mentor?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Tell me about a time when you disagreed with your boss.", content: "Tell me about a time when you disagreed with your boss.", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "How do you handle pressure?", content: "How do you handle pressure?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What is the name of our CEO?", content: "What is the name of our CEO?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What are your career goals?", content: "What are your career goals?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What gets you up in the morning?", content: "What gets you up in the morning?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What would your direct reports say about you?", content: "What would your direct reports say about you?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What were your bosses’ strengths/weaknesses?", content: "What were your bosses’ strengths/weaknesses?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "If I called your boss right now and asked him what is an area that you could improve on, what would he say?", content: "If I called your boss right now and asked him what is an area that you could improve on, what would he say?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Are you a leader or a follower?", content: "Are you a leader or a follower?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What was the last book you’ve read for fun?", content: "What was the last book you’ve read for fun?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What are your co-worker pet peeves?", content: "What are your co-worker pet peeves?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What are your hobbies?", content: "What are your hobbies?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What is your favorite website?", content: "What is your favorite website?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What makes you uncomfortable?", content: "What makes you uncomfortable?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What are some of your leadership experiences?", content: "What are some of your leadership experiences?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "How would you fire someone?", content: "How would you fire someone?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What do you like the most and least about working in this industry?", content: "What do you like the most and least about working in this industry?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "Would you work 40+ hours a week?", content: "Would you work 40+ hours a week?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What questions haven’t I asked you?", content: "What questions haven’t I asked you?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil},
+
+  {name: "What questions do you have for me?", content: "What questions do you have for me?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil}
 ])
