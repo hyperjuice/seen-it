@@ -8,7 +8,8 @@ namespace :scraper do
 		require 'open-uri'
 
     # 1. Go to URL
-    main_doc = Nokogiri::HTML(open("https://github.com/h5bp/Front-end-Developer-Interview-Questions"))
+    browser = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36'    
+    main_doc = Nokogiri::HTML(open("https://github.com/h5bp/Front-end-Developer-Interview-Questions", "User-Agent" => browser))
 
     # 2. Collect all interview question links
     # Search for nodes by css

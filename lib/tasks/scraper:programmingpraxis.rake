@@ -10,7 +10,8 @@ namespace :scraper do
 		require 'open-uri'
 
     # 1. Go to URL
-    main_doc = Nokogiri::HTML(open("http://programmingpraxis.com/contents/themes/"))
+    browser = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36'    
+    main_doc = Nokogiri::HTML(open("http://programmingpraxis.com/contents/themes/", "User-Agent" => browser))
 
     # 2. The plan for this site will be to grab
     # all table rows with a 'tr' selector, then
@@ -67,7 +68,7 @@ namespace :scraper do
     	if justthree < 3
 
     		# Grab the page at the link
-		   	question_doc = Nokogiri::HTML(open(question[:link]))
+		   	question_doc = Nokogiri::HTML(open(question[:link], "User-Agent" => browser))
 
 		   	# Capture the children of the div with class 
 		   	# .entrybody

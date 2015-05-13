@@ -8,7 +8,8 @@ namespace :scraper do
 		require 'open-uri'
 
     # 1. Go to URL
-    main_doc = Nokogiri::HTML(open("http://www.glassdoor.com/blog/common-interview-questions/"))
+    browser = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36'
+    main_doc = Nokogiri::HTML(open("http://www.glassdoor.com/blog/common-interview-questions/", "User-Agent" => browser))
 
     # 2. Collect all interview question links
     # Search for nodes by css
@@ -35,11 +36,27 @@ namespace :scraper do
 
     # Create tags that all say "non-technical", 
     # "general"
+    non_technical = Tag.find_by(category: 'non-technical')
+    if non_technical.nil?
+      puts "non-technical already exists ..."
+      non_technical = Tag.create(category: 'non-technical')
+    end
 
-    # Test-print the hash array ...
+    general = Tag.find_by(category: 'general')
+    if general.nil?
+      puts "general already exists ..."
+      general = Tag.create({category: 'general'})
+    end
+
+    # Test-print the hash array and write to the db 
+    puts "There are #{questions.count} questions in the question object ..."
     puts "QUESTION OBJECT:"
     questions.each do |question|
     	puts question.inspect
+
+      current = Post.create(question)
+      current.tags << general
+      current.tags << non_technical
     end
 
   end

@@ -11,7 +11,8 @@ namespace :scraper do
 		require 'open-uri'
 
     # 1. Go to URL
-    main_doc = Nokogiri::HTML(open("http://codingforinterviews.com/archive/paradigmsareconstructed@gmail.com-1bc404/"))
+    browser = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36'    
+    main_doc = Nokogiri::HTML(open("http://codingforinterviews.com/archive/paradigmsareconstructed@gmail.com-1bc404/", "User-Agent" => browser))
 
     # 2. Collect all interview question links
     # Search for nodes by css: 'b a'
@@ -42,7 +43,7 @@ namespace :scraper do
     	if justthree < 3
 
     		# Grab the page at the link
-		   	question_doc = Nokogiri::HTML(open(question[:link]))
+		   	question_doc = Nokogiri::HTML(open(question[:link], "User-Agent" => browser))
 
 		   	# Questions are accessible on these pages by
 		   	# looking for an h1 that starts with "This week's 
