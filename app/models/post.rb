@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+	attr_accessor :tag
 	belongs_to :user
 
 	acts_as_votable
