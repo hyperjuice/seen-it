@@ -10,6 +10,7 @@
     <p><%= raw post.content %></p>
 
   <div class="meta">
+     <%=  link_to "User's Page", user_path(post.user)%><br />
     <%= link_to time_ago_in_words(post.created_at) + " ago ", post %> |
     <span class="admin">
       <%= link_to("Show", post) if policy(post).show? %> |
@@ -21,6 +22,7 @@
        <%= link_to "Seen it", like_post_path(post), method: :put %>
      <%#<%= link_to "Downvote", dislike_post_path(post), method: :put %> 
     </div>
+
   
 
   </div>
