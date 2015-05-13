@@ -1,8 +1,15 @@
+
 <% @post.tags.each do |tag| %>
 <p><strong>tags:</strong>
 
   <%= tag.category %></p>
 <% end %>
+
+
+<h1>UPVOTES: <%= @post.get_upvotes.size %></h1>
+
+      <h1>DOWNVOTES     <%= @post.get_downvotes.size %></h1>
+</h1>
 
 <p>
   <strong>name:</strong>
