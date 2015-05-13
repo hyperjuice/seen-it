@@ -11,14 +11,14 @@ class PostPolicy < ApplicationPolicy
   end
 
   def edit?
-    post.user_id == user.try(:id)
+    (post.user_id == user.try(:id)) || (user.try(:id) == 1)
   end
 
   def update?
-  	post.user_id == user.try(:id)
+  	edit?
   end
 
   def destroy?
-    post.user_id == user.try(:id)
+    edit?
   end
 end
