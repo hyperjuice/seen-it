@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'pundit'
 gem 'acts_as_votable'
+gem 'simple_form', '~> 3.1.0'
+gem "js-routes"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
