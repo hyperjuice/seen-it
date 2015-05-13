@@ -1,3 +1,9 @@
+<% @post.tags.each do |tag| %>
+<p><strong>tags:</strong>
+
+  <%= tag.category %></p>
+<% end %>
+
 <p>
   <strong>name:</strong>
   <%= @post.name %>
@@ -37,4 +43,4 @@
 <% end %>
  
 <%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', post_path %>
+<%= link_to 'Back', posts_path %>
