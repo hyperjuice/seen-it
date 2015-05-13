@@ -1,0 +1,24 @@
+<%= @user.email %>
+
+<h2>Profile Pictures</h2>
+<%= form_for @picture, :html => { :multipart => true } do |form| %>
+  <%= form.hidden_field :user_id, value: @user.id %>
+  <%= form.file_field :file %><br />
+  <%= form.submit 'submit' %>
+<% end %>
+
+<% @user.pictures.each do |picture| %>
+	<%= image_tag picture.file.url(:medium) %>
+	<%= form_for picture, url: picture_path(picture), method: "DELETE" do |f| %>
+	<%= f.submit "Delete" %>
+<% end %>
+<% end %>
+
+
+<h2>Questions</h2>
+
+<% @user.posts.each do |post| %>
+	<strong>title: </strong><%= post.name %><br />
+	<strong>content: </strong><%= post.content %>
+	<br /><br />
+<% end %>

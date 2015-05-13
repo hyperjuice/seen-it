@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get '/about' => 'about#index'
   devise_for :users
+  resources :users, only: :show
+  resources :pictures, only: :create
+  resources :pictures, only: :destroy
   resources :posts do
   resources :comments
   member do
