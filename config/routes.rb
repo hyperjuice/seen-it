@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get '/about' => 'about#index'
   devise_for :users
+  resources :users, only: :show
   resources :posts do
   resources :comments
   member do
