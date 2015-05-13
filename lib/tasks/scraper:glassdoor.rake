@@ -38,14 +38,16 @@ namespace :scraper do
     # "general"
     non_technical = Tag.find_by(category: 'non-technical')
     if non_technical.nil?
-      puts "non-technical already exists ..."
       non_technical = Tag.create(category: 'non-technical')
+    else
+      puts "non-technical already exists ..."
     end
 
     general = Tag.find_by(category: 'general')
     if general.nil?
-      puts "general already exists ..."
       general = Tag.create({category: 'general'})
+    else
+      puts "general already exists ..."
     end
 
     # Test-print the hash array and write to the db 
