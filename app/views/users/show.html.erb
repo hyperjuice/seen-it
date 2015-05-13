@@ -11,3 +11,11 @@
 <% @user.pictures.each do |picture| %>
 	<%= image_tag picture.file.url(:medium) %>
 <% end %>
+
+<h2>Questions</h2>
+
+<% @user.posts.each do |post| %>
+	<strong>title: </strong><%= post.name %><br />
+	<strong>content: </strong><%= post.content %>
+	<br /><br />
+<% end %>
