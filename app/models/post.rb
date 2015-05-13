@@ -3,8 +3,7 @@ class Post < ActiveRecord::Base
 
 	acts_as_votable
 
-	belongs_to :tag
-	has_many :tags
+	has_and_belongs_to_many :tags
 
 	validates :name, presence: true
 	has_many :comments 

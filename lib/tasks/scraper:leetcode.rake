@@ -1,3 +1,5 @@
+# WORKING!
+
 namespace :scraper do
 
 	desc "Scrape all interview questions from https://leetcode.com/problemset/algorithms/"
@@ -8,7 +10,8 @@ namespace :scraper do
 		require 'open-uri'
 
     # 1. Go to URL
-    main_doc = Nokogiri::HTML(open("https://leetcode.com/problemset/"))
+    browser = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36'    
+    main_doc = Nokogiri::HTML(open("https://leetcode.com/problemset/", "User-Agent" => browser))
 
     # 2. Collect all interview question links
     # Search for nodes by css: 
@@ -30,7 +33,7 @@ namespace :scraper do
     # Populate hash with list
     main_doc.css(link_selector).each do |link|
 	    questions.push( { :name => link.content,
-	    	:link => link["href"], :difficulty => "",
+	    	:link => "https://leetcode.com"+link["href"], :difficulty => "",
 	    	:content => "" } )
     end
 
@@ -52,13 +55,13 @@ namespace :scraper do
 
     # Testing with a limited loop of the first 3 entries,
     # but iterate over all entries once db access is set up
-    justthree = 0
+    # justthree = 0
     questions.each do |question|
     	# comment out the following line for production
-    	if justthree < 3
+    	# if justthree < 3
 
     		# Grab the page at the link
-		   	question_doc = Nokogiri::HTML(open("https://leetcode.com"+question[:link]))
+		   	question_doc = Nokogiri::HTML(open(question[:link], "User-Agent" => browser))
 
 		   	# Questions are accessible on these pages by
 		   	# looking at the paragraph tags inside of the
@@ -71,15 +74,15 @@ namespace :scraper do
 	  	 	# spoiler
 
 		   	# Spoilers are in a div with class "spoilers"
-		   	question_spoilers = question_doc.css('.spoilers')
+		   	# question_spoilers = question_doc.css('.spoilers')
 
 		   	# This is how to access each individual spoiler,
 		   	# which we will store in a Comments table
 
-		   	puts "SPOILERS:"
-		   	question_spoilers.each do |spoiler|
-		   		puts spoiler
-		   	end
+		   	# puts "SPOILERS:"
+		   	# question_spoilers.each do |spoiler|
+		   	# 	puts spoiler
+		   	# end
 
 		   	# Remove both the .spoilers and .showspoilers 
 		   	# classes, so that they do not appear within the
@@ -92,7 +95,7 @@ namespace :scraper do
 		  	 		puts p.to_s
 		  	 		# puts p.content.gsub(/\n/," ").strip
 
-		  	 		question[:content] = p.to_s
+		  	 		question[:content] += p.to_s
 	  	 	end
 
 	  	 	# Tags are in hyperlinks in a span within the
@@ -104,31 +107,43 @@ namespace :scraper do
 		   	# table, which will have a row for each
 		   	# question-tag association
 
+		   	# Add to database
+		   	current = Post.create(question)
+
 		   	puts "TAGS:"
+
+		   	# This site uses a lot of tags, so there will
+		   	# be a list for each post
 		   	question_tags.each do |tag|
-		   		puts tag.text.gsub(/\n/," ").strip
+		   		clean_tag = tag.text.gsub(/\n/," ").strip
+
+		   		# First check to see if it's already in the
+		   		# Tag db
+			    tag_object = Tag.find_by(category: clean_tag)
+			    if tag_object.nil?
+
+			    	# If not, create it
+			      tag_object = Tag.create({category: clean_tag})
+			    else
+			      puts "tag #{tag_object} already exists ..."
+			    end
+
+			    # Either way, associate the Tag object with
+			    # the current post
+			    current.tags << tag_object
 		   	end
 
-	        # Add in a scraper delay with a minimum of 5s
-	        sleep(5 + Random.rand(10))
+        # Add in a scraper delay with a minimum of 5s
+        sleep(5 + Random.rand(10))
 
-		   	justthree = justthree + 1
-		  end
+        # Monitor the progress
+       	puts current
 
-	    # 4. Save for table Question:
-	    #    title
-	    #    question
-	    #    tags
-	    #    difficulty
-	    #    URL
+		   	# justthree = justthree + 1
+		  # end
 
   	end
 
-    # Test-print the hash array ...
-    puts "QUESTION OBJECT:"
-    questions.each do |question|
-    	puts question.inspect
-    end
-
 	end
+
 end

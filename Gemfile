@@ -23,6 +23,11 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# Seed Dump allows us to dump the current database into
+# the seeds.rb seed file, which we can then use to
+# re-populate the db at any time with rake db:seed
+gem 'seed_dump'
+
 gem 'pundit'
 gem 'acts_as_votable'
 # Use ActiveModel has_secure_password
