@@ -1,3 +1,5 @@
+# WORKING!
+
 namespace :scraper do
 
   desc "Scrape Frontend Developer Interview Questions at https://github.com/khan4019/front-end-Interview-Questions"
@@ -8,7 +10,8 @@ namespace :scraper do
 		require 'open-uri'
 
     # 1. Go to URL
-    main_doc = Nokogiri::HTML(open("https://github.com/khan4019/front-end-Interview-Questions"))
+    browser = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36'    
+    main_doc = Nokogiri::HTML(open("https://github.com/khan4019/front-end-Interview-Questions", "User-Agent" => browser))
 
     # 2. Collect all interview question links
     # Search for nodes by css
@@ -38,19 +41,80 @@ namespace :scraper do
 	    	:content => link.content } )
     end
 
-    # Questions 0-18 should be tagged "general"
-    # Questions 19-31 should be tagged "html"
-    # Questions 32-62 should be tagged "css"
-    # Questions 63-97 should be tagged "javascript"
-    # Questions 98-101 should be tagged "testing"
-    # Questions 102-104 should be tagged "performance"
-    # Questions 105-109 should be tagged "networking"
-    # Questions 110-114 should be tagged "fun questions"
+    # Questions 0-20 should be tagged "javascript"
+    # Questions 21-50 should be tagged "CSS"
+    # Questions 51-70 should be tagged "javascript" "algorithms"
+    # Questions 71-91 should be tagged "javascript" "DOM"
+    # Questions 92-106 should be tagged "HTML"
+
+    css_tag = Tag.find_by(category: 'CSS')
+    if css_tag.nil?
+      css_tag = Tag.create({category: 'CSS'})
+    else
+      puts "CSS already exists ..."
+    end
+
+    javascript_tag = Tag.find_by(category: 'javascript')
+    if javascript_tag.nil?
+      javascript_tag = Tag.create({category: 'javascript'})
+    else
+      puts "javascript already exists ..."
+    end
+
+    dom_tag = Tag.find_by(category: 'DOM')
+    if dom_tag.nil?
+      dom_tag = Tag.create({category: 'DOM'})
+    else
+      puts "DOM already exists ..."
+    end
+
+    html_tag = Tag.find_by(category: 'HTML')
+    if html_tag.nil?
+      html_tag = Tag.create({category: 'HTML'})
+    else
+      puts "HTML already exists ..."
+    end
+
+     algorithms_tag = Tag.find_by(category: 'algorithms')
+    if algorithms_tag.nil?
+      algorithms_tag = Tag.create({category: 'algorithms'})
+    else
+      puts "algorithms already exists ..."
+    end
 
     # Test-print the hash array ...
     puts "QUESTION OBJECT:"
-    questions.each do |question|
+    questions.each_with_index do |question,i|
+      puts "\n"
     	puts question.inspect
+      puts "\n"
+
+      # Questions 0-20 should be tagged "javascript"
+      # Questions 21-50 should be tagged "CSS"
+      # Questions 51-70 should be tagged "javascript" "algorithms"
+      # Questions 71-91 should be tagged "javascript" "DOM"
+      # Questions 92-106 should be tagged "HTML"
+
+      case i
+      when 0..20
+        current = Post.create(question)
+        current.tags << javascript_tag
+      when 21..50
+        current = Post.create(question)
+        current.tags << css_tag
+      when 51..70
+        current = Post.create(question)
+        current.tags << javascript_tag
+        current.tags << algorithms_tag
+      when 71..91
+        current = Post.create(question)
+        current.tags << javascript_tag
+        current.tags << dom_tag
+      when 92..106
+        current = Post.create(question)
+        current.tags << html_tag
+      end
+
     end
 
   end

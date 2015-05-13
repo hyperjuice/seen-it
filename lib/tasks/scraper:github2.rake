@@ -13,7 +13,8 @@ namespace :scraper do
 		require 'open-uri'
 
     # 1. Go to URL
-    main_doc = Nokogiri::HTML(open("https://github.com/tvandame/back-end-developer-interview-questions"))
+    browser = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36'    
+    main_doc = Nokogiri::HTML(open("https://github.com/tvandame/back-end-developer-interview-questions", "User-Agent" => browser))
 
     # 2. Collect all interview question links
     # Search for nodes by css
@@ -40,8 +41,8 @@ namespace :scraper do
 	    	:content => link.content } )
     end
 
-    # Questions 0-18 should be tagged "general"
-    # Questions 19-31 should be tagged "html"
+    # Questions 0-14 should be tagged "general" "non-technical"
+    # Questions 15- should be tagged "html"
     # Questions 32-62 should be tagged "css"
     # Questions 63-97 should be tagged "javascript"
     # Questions 98-101 should be tagged "testing"
