@@ -1,7 +1,8 @@
 class PicturesController < ApplicationController
 	def create
-		@picture = Picture.create(picture_params)
+		@picture = Picture.new(picture_params)
 		authorize @picture
+		@picture = Picture.save
 		redirect_to @picture.user	
 	end
 

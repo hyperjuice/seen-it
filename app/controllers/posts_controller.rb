@@ -52,7 +52,8 @@ class PostsController < ApplicationController
 
     # tag creation action
     tag_params = {category: params[:post][:tag]}
-    tag = Tag.create(tag_params)
+    tag = Tag.find_or_create_by(tag_params)
+    # tag = Tag.create(tag_params)
 
     # POST associated with logged in current_user
     @post = current_user.posts.build(post_params)
