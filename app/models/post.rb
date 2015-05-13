@@ -7,5 +7,6 @@ class Post < ActiveRecord::Base
 	has_and_belongs_to_many :tags
 
 	validates :name, presence: true
-	has_many :comments 
+	has_many :comments
+
 end
