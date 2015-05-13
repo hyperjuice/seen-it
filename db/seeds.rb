@@ -171,3 +171,57 @@ Post.create!([
 
   {name: "What questions do you have for me?", content: "What questions do you have for me?", user_id: nil, difficulty: "", link: "http://www.glassdoor.com/blog/common-interview-questions/", tag_id: nil}
 ])
+
+# geeksforgeeks Top 25
+
+Post.create!([
+  {name: "Lowest common Ancestor (http://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/)", content: "1) Lowest common Ancestor (http://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/)", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: " A unsorted array of integers is given; you need to find the max product formed my multiplying three numbers.   (You cannot sort the array, watch out when there are negative numbers)", content: "2)  A unsorted array of integers is given; you need to find the max product formed my multiplying three numbers.   (You cannot sort the array, watch out when there are negative numbers)", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Left View of a tree (http://www.geeksforgeeks.org/print-left-view-binary-tree/)", content: "3) Left View of a tree (http://www.geeksforgeeks.org/print-left-view-binary-tree/)", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Reversing of Arrays (http://www.geeksforgeeks.org/write-a-program-to-reverse-an-array/)", content: "4) Reversing of Arrays (http://www.geeksforgeeks.org/write-a-program-to-reverse-an-array/)", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Cache Line, Cache internal concept, RR scheduling", content: "5) Cache Line, Cache internal concept, RR scheduling", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Print the middle of a given linked list (http://www.geeksforgeeks.org/write-a-c-function-to-print-the-middle-of-the-linked-list/)", content: "6) Print the middle of a given linked list (http://www.geeksforgeeks.org/write-a-c-function-to-print-the-middle-of-the-linked-list/)", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Pair wise swap of elements in linked list (http://www.geeksforgeeks.org/pairwise-swap-elements-of-a-given-linked-list/)", content: "7) Pair wise swap of elements in linked list (http://www.geeksforgeeks.org/pairwise-swap-elements-of-a-given-linked-list/)", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "HashMap internals (http://javarevisited.blogspot.in/2011/02/how-hashmap-works-in-java.html)", content: "8) HashMap internals (http://javarevisited.blogspot.in/2011/02/how-hashmap-works-in-java.html)", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Double checking Singleton (http://javarevisited.blogspot.in/2014/05/double-checked-locking-on-singleton-in-java.html) ", content: "9) Double checking Singleton (http://javarevisited.blogspot.in/2014/05/double-checked-locking-on-singleton-in-java.html) ", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Factory Pattern (http://javarevisited.blogspot.in/2011/12/factory-design-pattern-java-example.html)", content: "10) Factory Pattern (http://javarevisited.blogspot.in/2011/12/factory-design-pattern-java-example.html)", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Print a given matrix in spiral form (http://www.geeksforgeeks.org/print-a-given-matrix-in-spiral-form/)", content: "11) Print a given matrix in spiral form (http://www.geeksforgeeks.org/print-a-given-matrix-in-spiral-form/)", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "DFS on Graph and its representation (http://www.geeksforgeeks.org/graph-and-its-representations/, http://ideone.com/TA4ldc)", content: "12) DFS on Graph and its representation (http://www.geeksforgeeks.org/graph-and-its-representations/, http://ideone.com/TA4ldc)", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Object Oriented concept, Polymorphism , Method overloading, method overriding, Difference between abstraction and encapsulation, Aggregation and Composition", content: "13) Object Oriented concept, Polymorphism , Method overloading, method overriding, Difference between abstraction and encapsulation, Aggregation and Composition", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Print nth last node in linked list", content: "14) Print nth last node in linked list", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Delete a given node in Linked List under given constraints (http://www.geeksforgeeks.org/delete-a-given-node-in-linked-list-under-given-constraints/)", content: "15) Delete a given node in Linked List under given constraints (http://www.geeksforgeeks.org/delete-a-given-node-in-linked-list-under-given-constraints/)", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Implement Stack using Queues(http://www.geeksforgeeks.org/implement-stack-using-queue/)", content: "16) Implement Stack using Queues(http://www.geeksforgeeks.org/implement-stack-using-queue/)", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Find if two rectangles overlap (http://www.geeksforgeeks.org/find-two-rectangles-overlap/)", content: "17) Find if two rectangles overlap (http://www.geeksforgeeks.org/find-two-rectangles-overlap/)", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Multithreading concepts", content: "18) Multithreading concepts", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Given an array of integers, update the index with multiplication of previous and next integers,\n", content: "19) Given an array of integers, update the index with multiplication of previous and next integers,\n<pre>\r\n   e.g. Input: 2 , 3, 4, 5, 6\r\n        Output: 2*3, 2*4, 3*5, 4*6, 5*6 </pre>", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Difference of creating threads in Java using Thread and Runnable ", content: "20) Difference of creating threads in Java using Thread and Runnable ", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "How hashset is implemented in Java internally.", content: "21) How hashset is implemented in Java internally.", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "DeadLock example code (Producer & Consumer Code) ", content: "22) DeadLock example code (Producer & Consumer Code) ", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Find the number which is not repeated in Array of integers, others are present for two times.\n", content: "23) Find the number which is not repeated in Array of integers, others are present for two times.\n<pre>\r\ne.g. Input : 23, 34,56,21,21,56,78,23, 34\t\t\r\n\t Output: 23\r\n\t Hint: USE XOR </pre>", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Serialization and related concepts.", content: "24) Serialization and related concepts.", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
+
+  {name: "Comparators in TreeSet", content: "25) Comparators in TreeSet", user_id: nil, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil}
+])
