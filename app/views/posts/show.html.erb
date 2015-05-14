@@ -1,9 +1,7 @@
 
 <strong>tags:</strong>
 <% @post.tags.each do |tag| %>
-<p>
-
-  <%= tag.category %></p>
+  <%= tag.category %>
 <% end %>
 
 
@@ -37,12 +35,14 @@
  
 <h2>Add a comment:</h2>
 <%= form_for([@post, @post.comments.build]) do |f| %>
+  <br>
   <p>
-    <%= f.label :commenter %><br>
+    <%= f.label :commenter %>
     <%= f.text_field :commenter %>
   </p>
+  <br>
   <p>
-    <%= f.label :body %><br>
+    <%= f.label :body %>
     <%= f.text_area :body %>
   </p>
   <p>

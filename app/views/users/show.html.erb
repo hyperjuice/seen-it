@@ -1,5 +1,3 @@
-<%= @user.email %>
-
 <h2>Profile Pictures</h2>
 <%= form_for @picture, :html => { :multipart => true } do |form| %>
   <%= form.hidden_field :user_id, value: @user.id %>
