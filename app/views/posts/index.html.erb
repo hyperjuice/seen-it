@@ -42,17 +42,6 @@
       <%= link_to("Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete?" }) if policy(post).destroy? %> 
     </span>
  
-<<<<<<< HEAD
-    
-=======
-    <div class="votes">
-       <%= link_to "Seen it", like_post_path(post), method: :put %>
-     <%#<%= link_to "Downvote", dislike_post_path(post), method: :put %> 
-
-    </div>
->>>>>>> dc-may14-1
-
-  
 
   </div>
 </div>
