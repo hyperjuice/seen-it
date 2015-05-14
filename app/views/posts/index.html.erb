@@ -4,45 +4,58 @@
 </div>
 
 <div class="page-header">
-  <h2> All Questions </h2>
+  <h2>Interview Questions</h2>
 </div>
 
 <%= link_to "Post New Question", new_post_path, class: "btn btn-success" %>
 
 <% @posts.each do |post| %>
+
 <div class="post">
+
   <div class="votes">
-      <%= link_to image_tag("http://i.imgur.com/WE61y1y.png?1"), like_post_path(post), method: :put%>
-<div class="post thumbnail">
-<div class ="context">
-  <strong>name: </strong><%= post.name %>
-  <p><strong>content: </strong><%= raw post.content %></p>
- 
-    
-   
-    <span class="tag-pad glyphicon glyphicon-tags"></span>
-    
-    <% post.tags.each do |tag| %>
-          <span class="label label-default"><%= tag.category %></span>
-    <% end %>
 
+    <%= link_to image_tag("http://i.imgur.com/WE61y1y.png?1"), like_post_path(post), method: :put %>
 
+    <div>
 
+      <div class ="context">
 
-  </p>
+        <div class="panel panel-default">
 
-  <div class="meta">
-     <%=  link_to "User's Page", user_path(post.user)%><br />
-    <%= link_to time_ago_in_words(post.created_at) + " ago ", post %> |
-    <span class>
-      <%= link_to("Show", post) + " |" if policy(post).show? %>
-      <%= link_to("Edit", edit_post_path(post)) + " |" if policy(post).edit? %>
-      <%= link_to("Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete?" }) if policy(post).destroy? %> 
-    </span>
- 
+          <div class="panel-heading">
+            <a href="<%= post.link %>" target="_blank"><%= post.name %></a>
+          </div>
 
-  </div>
-</div>
+          <div class="panel-body">
 
-</div>
+            <p><%= raw post.content %></p>
+         
+            <span class="tag-pad glyphicon glyphicon-tags"></span>
+
+            <% post.tags.each do |tag| %>
+              <span class="label label-default"><%= tag.category %></span>
+            <% end %>
+
+                <br>
+
+                <%= link_to "User's Page", user_path(post.user)%> | 
+              <span class>
+                <%= link_to("Show", post) + " |" if policy(post).show? %>
+                <%= link_to("Edit", edit_post_path(post)) + " |" if policy(post).edit? %>
+                <%= link_to("Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete?" }) if policy(post).destroy? %> 
+              </span>
+
+          </div> <!-- panel-body div -->
+
+        </div> <!-- panel div -->
+
+      </div> <!-- context div -->
+
+    </div>
+
+  </div> <!-- votes div -->
+
+</div> <!-- post div -->
+
 <% end %>
