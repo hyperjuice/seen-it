@@ -6,16 +6,24 @@
 
 <% @posts.each do |post| %>
 <div class="post">
-  <strong><%= post.name %></strong>
-    <p><%= raw post.content %></p>
+  <strong>name: </strong><%= post.name %>
+  <p><strong>content: </strong><%= raw post.content %></p>
+  <p><strong>tags: </strong>
+    <% post.tags.each do |tag| %>
+      <%= tag.category %>
+    <% end %>
+
+
+
+  </p>
 
   <div class="meta">
      <%=  link_to "User's Page", user_path(post.user)%><br />
     <%= link_to time_ago_in_words(post.created_at) + " ago ", post %> |
-    <span class="admin">
-      <%= link_to("Show", post) if policy(post).show? %> |
-      <%= link_to("Edit", edit_post_path(post)) if policy(post).edit? %> | 
-      <%= link_to("Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete" }) if policy(post).destroy? %> 
+    <span class>
+      <%= link_to("Show", post) + " |" if policy(post).show? %>
+      <%= link_to("Edit", edit_post_path(post)) + " |" if policy(post).edit? %>
+      <%= link_to("Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete?" }) if policy(post).destroy? %> 
     </span>
  
     <div class="votes">
