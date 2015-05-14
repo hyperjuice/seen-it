@@ -106,8 +106,8 @@ class PostsController < ApplicationController
       params.require(:post).permit(:name, :content)
     end
 
-    # def tag_params
-    #   params.require(:tag).permit(:category)
-    # end
+    def tag_params
+      params.require(:tag).permit(:category)
+    end
 
 end
