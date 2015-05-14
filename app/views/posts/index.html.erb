@@ -4,7 +4,7 @@
 </div>
 
 <div class="page-header">
-  <h2> All Questions </h2>
+  <h2> Interview Questions </h2>
 </div>
 
 <%= link_to "Post New Question", new_post_path, class: "btn btn-success" %>
@@ -13,10 +13,11 @@
 <div class="post">
   <div class="votes">
       <%= link_to image_tag("http://i.imgur.com/WE61y1y.png?1"), like_post_path(post), method: :put%>
+
 <div class="post thumbnail">
 <div class ="context">
-  <strong>name: </strong><%= post.name %>
-  <p><strong>content: </strong><%= raw post.content %></p>
+  <strong>Question: </strong><%= post.name %>
+  <p><strong>Description: </strong><%= raw post.content %></p>
  
     
    
