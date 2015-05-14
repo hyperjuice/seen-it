@@ -101,7 +101,8 @@ sub {
 img {
   width: auto\9;
   height: auto;
-  max-width: 100%;
+/*  max-width: 100%;
+*/  
   vertical-align: middle;
   border: 0;
   -ms-interpolation-mode: bicubic;
@@ -3877,7 +3878,7 @@ input[type="submit"].btn.btn-mini {
           border-radius: 0 0 6px 6px;
 }
 
-.alert {
+/*.alert {
   padding: 8px 35px 8px 14px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -3887,7 +3888,7 @@ input[type="submit"].btn.btn-mini {
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
-}
+}*/
 
 .alert,
 .alert h4 {
