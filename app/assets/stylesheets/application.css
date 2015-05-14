@@ -14,6 +14,10 @@
  *= require_self
  */
 
+.highlight {
+  background-color: #CCE6FF;
+}
+
 body {
 	padding-top: 80px;
 	padding-bottom: 80px;

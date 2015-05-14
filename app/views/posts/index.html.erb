@@ -13,11 +13,14 @@
 <div class="post">
   <strong>name: </strong><%= post.name %>
   <p><strong>content: </strong><%= raw post.content %></p>
-  <p><strong>tags: </strong>
+ 
+    
+    <div class="highlight">
+       <p><strong>tags: </strong>
     <% post.tags.each do |tag| %>
       <%= tag.category %>
     <% end %>
-
+    </div>
 
 
   </p>
