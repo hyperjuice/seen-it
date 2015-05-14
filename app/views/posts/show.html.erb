@@ -1,14 +1,11 @@
 
-<strong>tags:</strong>
+<span class="tag-pad glyphicon glyphicon-tags"></span>
 <% @post.tags.each do |tag| %>
-  <%= tag.category %>
+  <span class="label label-default"><%= tag.category %></span>
 <% end %>
 
 
 <h1>UPVOTES: <%= @post.get_upvotes.size %></h1>
-
-      <h1>DOWNVOTES     <%= @post.get_downvotes.size %></h1>
-</h1>
 
 <p>
   <strong>name:</strong>

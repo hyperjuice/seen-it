@@ -20,13 +20,11 @@
  
     
    
-       <p><strong>tags: </strong>
+    <span class="tag-pad glyphicon glyphicon-tags"></span>
     
-    <span class="highlight">
     <% post.tags.each do |tag| %>
-      <%= tag.category %>
+          <span class="label label-default"><%= tag.category %></span>
     <% end %>
-    </span>
 
 
 
