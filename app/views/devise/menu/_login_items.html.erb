@@ -5,7 +5,7 @@
   <div id="nobullets">
 	  <ul>
 		  <li>
-		  	Hi, <%= current_user.email %>
+		  	Hi, <%= link_to current_user.first_name, current_user%>
 		  </li>
 		  <li>
 		  <%= link_to('logout', destroy_user_session_path, :method => :delete) %>        
@@ -20,3 +20,4 @@
   	<%= link_to('sign up', new_user_registration_path) %>
   </li>
 <% end %>
+

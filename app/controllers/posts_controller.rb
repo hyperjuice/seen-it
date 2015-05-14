@@ -59,7 +59,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         @post.tags << tag
-        format.html { redirect_to @post, notice: 'Post was successfully created' }
+        format.html { redirect_to @post, notice: 'Question was successfully created' }
         format.json { render :show, status: :created, location: @post }
       else
         @post.tags << tag
@@ -73,9 +73,9 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
-    authorize @post  
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated' }
+    authorize @post
+      if @post.update(post_params) && @post.tags.update(tag_params)
+        format.html { redirect_to @post, notice: 'Question was successfully updated' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -90,7 +90,7 @@ class PostsController < ApplicationController
     authorize @post
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed' }
+      format.html { redirect_to posts_url, notice: 'Question was successfully destroyed' }
       format.json { head :no_content }
     end
   end
@@ -105,4 +105,9 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:name, :content)
     end
+
+    # def tag_params
+    #   params.require(:tag).permit(:category)
+    # end
+
 end

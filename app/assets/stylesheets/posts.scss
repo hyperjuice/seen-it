@@ -16,20 +16,22 @@
 	display: none;
 }
 
-.post.hover .admin {
+/*.post.hover .admin {
 	display: inline;
 }
 
 .post.hover {
 	background: #FAFAFA
-}
+}*/
 
 .notice {
 	font-size: 24px;
+	font-weight: bold;
 	color: green;
 }
 
 .alert {
+	font-size: 24px;
 	font-weight: bold;
 	color: red;
 }
