@@ -12,7 +12,7 @@
 <% @posts.each do |post| %>
 <div class="post">
   <div class="votes">
-      <%= link_to image_tag("http://i.imgur.com/WE61y1y.png?1"), like_post_path(post), method: :put%>
+      <%= link_to image_tag("http://i.imgur.com/WE61y1y.png?1"), like_post_path(post), method: :put%></div>
 <div class="post thumbnail">
 <div class ="context">
   <strong>name: </strong><%= post.name %>

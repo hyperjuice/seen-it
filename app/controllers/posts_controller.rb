@@ -72,12 +72,18 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+
+    tag_params = {category: params[:post][:tag]}
+    tag = Tag.find_or_create_by(tag_params)
+
     respond_to do |format|
     authorize @post
-      if @post.update(post_params) && @post.tags.update(tag_params)
+      if @post.update(post_params)
+        @post.tags << tag
         format.html { redirect_to @post, notice: 'Question was successfully updated' }
         format.json { render :show, status: :ok, location: @post }
       else
+        @post.tags << tag
         format.html { render :edit }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
