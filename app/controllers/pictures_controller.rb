@@ -18,5 +18,4 @@ private
 	def picture_params
 		params.require(:picture).permit(:file, :user_id)
 	end
-
 end

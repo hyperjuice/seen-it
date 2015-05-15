@@ -2,21 +2,46 @@
 <%= form_for @picture, :html => { :multipart => true } do |form| %>
   <%= form.hidden_field :user_id, value: @user.id %>
   <%= form.file_field :file %><br />
-  <%= form.submit 'submit' %>
-<% end %>
+  	<%= form.submit 'submit' %>
+	<% end %>
 
 <% @user.pictures.each do |picture| %>
 	<%= image_tag picture.file.url(:medium) %>
 	<%= form_for picture, url: picture_path(picture), method: "DELETE" do |f| %>
-	<%= f.submit "Delete" %>
-<% end %>
+		<%= f.submit "Delete" %>
+	<% end %>
 <% end %>
 
-
-<h2>Questions</h2>
+<h2>Interview Questions</h2>
 
 <% @user.posts.each do |post| %>
-	<strong>title: </strong><%= post.name %><br />
-	<strong>content: </strong><%= post.content %>
-	<br /><br />
+	<div class="votes">
+    <%= link_to image_tag("http://i.imgur.com/WE61y1y.png?1"), like_post_path(post), method: :put%>
+  </div>
+  
+	<div class="post thumbnail">
+		<div class ="context">
+		  <strong>name: </strong>
+		  <%= post.name %>
+		  <p>
+		  	<strong>content: </strong>
+		  	<%= raw post.content %>
+		  </p>
+  		<p>
+	    	<strong>tags: </strong>
+	    	<span class="highlight">
+		    <% post.tags.each do |tag| %>
+		      <%= tag.category %>
+		    <% end %>
+	    	</span>
+  		</p>
+
+		  <div class="meta">
+		    <span class>
+		      <%= link_to("Edit", edit_post_path(post)) + " |" if policy(post).edit? %>
+		      <%= link_to("Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete?" }) if policy(post).destroy? %> 
+		    </span>
+		  </div>
+		</div> <!-- context div -->
+	</div> <!-- thumbnail box -->
 <% end %>

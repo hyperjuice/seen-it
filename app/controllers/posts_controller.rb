@@ -1,9 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: :index
-
-  # GET /posts
-  # GET /posts.json
   
   def score
     self.get_upvotes.size - self.get_downvotes.size
@@ -25,36 +22,24 @@ class PostsController < ApplicationController
     posts = Post.all.sort_by do |post|
       post.get_upvotes.size
     end
-
     @posts = posts.reverse
-
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
   def show
     authorize @post
   end
 
-  # GET /posts/new
   def new
     @post = Post.new
   end
 
-  # GET /posts/1/edit
   def edit
     authorize @post
   end
 
-  # POST /posts
-  # POST /posts.json
   def create
-
-    # tag creation action
     tag_params = {category: params[:post][:tag]}
     tag = Tag.find_or_create_by(tag_params)
-
-    # POST associated with logged in current_user
     @post = current_user.posts.build(post_params)
     respond_to do |format|
       if @post.save
@@ -69,23 +54,23 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
   def update
+    tag_params = {category: params[:post][:tag]}
+    tag = Tag.find_or_create_by(tag_params)
     respond_to do |format|
     authorize @post
-      if @post.update(post_params) && @post.tags.update(tag_params)
+      if @post.update(post_params)
+        @post.tags << tag
         format.html { redirect_to @post, notice: 'Question was successfully updated' }
         format.json { render :show, status: :ok, location: @post }
       else
+        @post.tags << tag
         format.html { render :edit }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     authorize @post
     @post.destroy
@@ -95,19 +80,16 @@ class PostsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+private
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:name, :content)
-    end
+  def post_params
+    params.require(:post).permit(:name, :content)
+  end
 
-    def tag_params
-      params.require(:tag).permit(:category)
-    end
-
+  def tag_params
+    params.require(:tag).permit(:category)
+  end
 end

@@ -1,17 +1,16 @@
 <%= form_for(@post) do |f| %>
-  
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @post.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-  
   <br>
   <div class="field">
     <%= f.label :name %>
@@ -19,7 +18,7 @@
   </div>
   <br>
   <div class="field">
-    <%= f.label :content %><br>
+    <%= f.label :content %>
     <%= f.text_area :content, :size => "30x10" %>
   </div>
   <br>
@@ -27,10 +26,7 @@
     <%= f.label :tag %>
     <%= f.text_field :tag %>
   </div>
-
   <div class="actions">
     <%= f.submit "Submit" %>
   </div>
-  
-
 <% end %>
