@@ -1,10 +1,11 @@
-<h1>Seen it : <%= @post.get_upvotes.size %></h1>
-  <%= link_to image_tag("http://i.imgur.com/WE61y1y.png?1"), like_post_path, method: :put%>
-  
-  <span class="tag-pad glyphicon glyphicon-tags"></span>
-  <% @post.tags.each do |tag| %>
-    <span class="label label-default"><%= tag.category %></span>
-  <% end %>
+<div class="row">  <!-- row -->
+
+  <h1>Seen it: <%= @post.get_upvotes.size %></h1>
+  <div class="votes">  
+
+      <%= link_to image_tag("http://i.imgur.com/WE61y1y.png?1"), like_post_path, method: :put%>
+
+  </div> <!-- votes div -->
   
   </h1>
   <p>
@@ -15,6 +16,28 @@
     <strong>content:</strong>
     <%= raw @post.content %>
   </p>
+  <div class ="context">
+
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        <a href="<%= @post.link %>" target="_blank"><%= @post.name %></a>
+      </div>  
+
+      <div class="panel-body">
+
+        <p><%= raw @post.content %></p>
+
+
+        <span class="tag-pad glyphicon glyphicon-tags"></span>
+  
+        <% @post.tags.each do |tag| %>
+          <span class="label label-default"><%= tag.category %></span>
+        <% end %>
+    </div>
+  </div>
+</div>
+</div>
 
   <h2>Add a comment:</h2>
   <%= form_for([@post, @post.comments.build]) do |f| %>

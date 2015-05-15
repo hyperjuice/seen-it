@@ -2,8 +2,9 @@ class PicturesController < ApplicationController
 	def create
 		@picture = Picture.new(picture_params)
 		authorize @picture
-		@picture = Picture.save
-		redirect_to @picture.user	
+		@picture = @picture.save
+		@user = current_user
+		redirect_to @user	
 	end
 
 	def destroy
