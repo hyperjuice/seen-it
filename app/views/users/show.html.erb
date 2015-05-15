@@ -15,33 +15,38 @@
 <h2>Interview Questions</h2>
 
 <% @user.posts.each do |post| %>
+
+<div class="row">  <!-- row -->
 	<div class="votes">
     <%= link_to image_tag("http://i.imgur.com/WE61y1y.png?1"), like_post_path(post), method: :put%>
-  </div>
+  </div> <!-- votes div -->
   
-	<div class="post thumbnail">
-		<div class ="context">
-		  <strong>name: </strong>
-		  <%= post.name %>
-		  <p>
-		  	<strong>content: </strong>
-		  	<%= raw post.content %>
-		  </p>
-  		<p>
-	    	<strong>tags: </strong>
-	    	<span class="highlight">
-		    <% post.tags.each do |tag| %>
-		      <%= tag.category %>
-		    <% end %>
-	    	</span>
-  		</p>
+	<div class ="context">
+		<div class="panel panel-default">
+			<div class="panel-heading">
 
-		  <div class="meta">
-		    <span class>
-		      <%= link_to("Edit", edit_post_path(post)) + " |" if policy(post).edit? %>
-		      <%= link_to("Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete?" }) if policy(post).destroy? %> 
-		    </span>
-		  </div>
-		</div> <!-- context div -->
-	</div> <!-- thumbnail box -->
+
+		  <a href="<%= post.link %>" target="_blank"><%= post.name %></a>
+      </div>
+
+      <div class="panel-body">
+
+        <p><%= raw post.content %></p>
+     
+        <span class="tag-pad glyphicon glyphicon-tags"></span>
+
+        <% post.tags.each do |tag| %>
+          <span class="label label-default"><%= tag.category %></span>
+        <% end %>
+
+			  <div class="meta">
+			    <span class>
+			      <%= link_to("Edit", edit_post_path(post)) + " |" if policy(post).edit? %>
+			      <%= link_to("Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete?" }) if policy(post).destroy? %> 
+			    </span>
+			  </div>
+			</div>  
+		</div> <!-- panel body -->
+	</div> <!--  -->
+</div>	<!-- end of row -->
 <% end %>
