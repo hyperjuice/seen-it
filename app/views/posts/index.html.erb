@@ -1,11 +1,11 @@
-<div class="jumbotron">
-  <h1>Welcome to Seen-It!</h1>
-  <h4>Seen It is your one stop shop for looking at technical interview questions for newly minted programmers. Not only can you find questions that have been asked, but you can create your own! As you're scrolling through the many questions, if you see one that you've been asked on an interview, click the "Seen It" link. The questions with the most "Seen Its" are those that have been asked the most on interviews, and you should therefore brush up on them. And don't forget to check out the discussions that happen on each question by looking at their comments. You can also edit and delete questions that you've posted.</h4>
+<div class="jumbotron top-graphic">
+  <p class="top-message"><br><b>What got you here<br>won't get you there</b></p>
+  <p class="bot-message"><br><b>There's one more challenge to go ...</b></p>
 </div>
 
 <div class="page-header">
 
-  <h2> Interview Questions </h2>
+  <h2>Have You Seen It?</h2>
 
 </div>
 
@@ -14,9 +14,12 @@
 <div class="row">  <!-- row -->
 
   <div class="votes">
+    <%= post.get_upvotes.size %>
+  </div>
 
-    <%= link_to image_tag("http://i.imgur.com/WE61y1y.png?1"), like_post_path(post), method: :put %>
-
+  <div class="eyeballs">
+    <%= link_to image_tag("eyeball-small.png"), like_post_path(post), method: :put %>
+    <!-- also located at http://i.imgur.com/WE61y1y.png?1 -->
   </div> <!-- votes div -->
 
   <div class ="context">
