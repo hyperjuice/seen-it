@@ -31,14 +31,13 @@
   <% end %>
 
   <h2>Read the Comments:</h2>
-  <% @post.comments.each do |comment| %>
-   
+    <% @post.comments[0...(@post.comments.length - 1)].each do |comment| %>
     <p>
-      <strong>Comment:</strong>
+    <strong>Comment:</strong>
       <%= comment.body %>
     </p>
-  <% end %>
-   
- 
+   <% end %>
+
   <%= link_to 'Edit', edit_post_path(@post) %> |
   <%= link_to 'Back', posts_path %>
+ 
