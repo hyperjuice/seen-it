@@ -20,8 +20,7 @@
   
   <h2>Add a comment:</h2>
   <%= form_for([@post, @post.comments.build]) do |f| %>
-    <br>
-    <br>
+
     <p>
       <%= f.label :body %>
       <%= f.text_area :body %>
@@ -31,7 +30,7 @@
     </p>
   <% end %>
 
-  <h2>Comments</h2>
+  <h2>Read the Comments:</h2>
   <% @post.comments.each do |comment| %>
    
     <p>
