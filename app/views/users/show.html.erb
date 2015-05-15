@@ -1,16 +1,20 @@
-<h2>Profile Pictures</h2>
+<div>
+<h2 class="profile-title">Profile Pictures</h2>
+<% @user.pictures.each do |picture| %>
+	<div class="profile-pic">
+		<%= image_tag picture.file.url(:medium) %>
+	</div>
+	<%= form_for picture, url: picture_path(picture), method: "DELETE" do |f| %>
+		<%= f.submit "Delete", class:"btn btn-danger" %>
+	<% end %>
+<% end %>
+
 <%= form_for @picture, :html => { :multipart => true } do |form| %>
   <%= form.hidden_field :user_id, value: @user.id %>
   <%= form.file_field :file %><br />
-  	<%= form.submit 'submit' %>
+  	<%= form.submit 'submit', class:"btn btn-success" %>
 	<% end %>
-
-<% @user.pictures.each do |picture| %>
-	<%= image_tag picture.file.url(:medium) %>
-	<%= form_for picture, url: picture_path(picture), method: "DELETE" do |f| %>
-		<%= f.submit "Delete" %>
-	<% end %>
-<% end %>
+</div>
 
 <h2>Interview Questions</h2>
 

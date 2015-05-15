@@ -58,6 +58,34 @@ body {
 .jumbotron .container {
   max-width: 100%;
 }
+
+
+.profile-pic{
+  height:200px;
+  width:200px;
+  position:relative;    
+  border-radius:100%;
+  overflow:hidden;
+}
+.profile-pic img{
+  position:absolute;
+  left:-50%; right:-50%; top:0;
+  margin:auto;
+  height:100%; width:auto;
+}
+
+.profile-title, .edit_picture, .new_picture {
+  text-align: center;
+}
+
+.edit_picture {
+  margin-top: 20px;
+}
+
+#picture_file {
+  margin: 0 auto;
+}
+ 
 @media screen and (min-width: 768px) {
   .jumbotron {
     padding: 12px 0;
