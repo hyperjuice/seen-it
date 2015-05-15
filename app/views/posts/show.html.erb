@@ -1,8 +1,8 @@
 <div class="row">  <!-- row -->
 
+  <h1>Seen it: <%= @post.get_upvotes.size %></h1>
   <div class="votes">  
 
-    <h1>Seen it: <%= @post.get_upvotes.size %></h1>
       <%= link_to image_tag("http://i.imgur.com/WE61y1y.png?1"), like_post_path, method: :put%>
 
   </div> <!-- votes div -->
@@ -25,11 +25,6 @@
         <% @post.tags.each do |tag| %>
           <span class="label label-default"><%= tag.category %></span>
         <% end %>
-
-        <span class>
-          <%= link_to("Edit", edit_post_path(post)) + " |" if policy(post).edit? %>
-          <%= link_to("Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete?" }) if policy(post).destroy? %> 
-        </span>
     </div>
   </div>
 </div>
