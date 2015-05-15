@@ -19,6 +19,9 @@
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
+
+				<%= link_to "Post New Question", new_post_path, class: "btn btn-success" %>
+
 				<div class="nav navbar-right nav pull-left">
 					<li><%= link_to "all questions", posts_path %></li>
 					<li><%= link_to 'about', about_path %></li>

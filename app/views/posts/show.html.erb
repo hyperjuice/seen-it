@@ -17,7 +17,7 @@
     <strong>content:</strong>
     <%= raw @post.content %>
   </p>
-  
+
   <h2>Add a comment:</h2>
   <%= form_for([@post, @post.comments.build]) do |f| %>
 
