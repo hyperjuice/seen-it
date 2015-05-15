@@ -42,21 +42,50 @@
 }
 
 .context {
-	float: left;
 	display: inline-block;
-	width: 100%;
+	width: 97%;
 	float: right;
 
-    width: -moz-calc(100% - 100px);
-    width: -webkit-calc(100% - 100px);
-    width: calc(100% - 100px);
-    height: 100%
+    width: -moz-calc(97% - 100px);
+    width: -webkit-calc(97% - 100px);
+    width: calc(97% - 100px);
+    height: 100%;
+}
+
+.eyeballs {
+	padding-top: 5px;
+    display:inline-block;
+	float: left;
+	width: 54px;
+	height: 100%;
 }
 
 .votes {
+	text-align: right;
+	padding-top: 20px;
+	padding-right: 10px;
     display:inline-block;
 	float: left;
-	width: 5%;
+	width: 70px;
+	height: 100%;
+	font-size: 25pt;
+	font-style: bold;
+}
+
+.top-graphic {
+	background-image: url("ladders.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.top-message {
 	float: left;
-	height: 100%
+	color: white;
+	font-size: 25;
+}
+
+.bot-message {
+	float: right;
+	color: white;
+	font-size: 25;
 }
