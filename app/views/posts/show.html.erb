@@ -1,41 +1,45 @@
-  <h1>Seen it : <%= @post.get_upvotes.size %></h1>
+<h1>Seen it : <%= @post.get_upvotes.size %></h1>
   <%= link_to image_tag("http://i.imgur.com/WE61y1y.png?1"), like_post_path, method: :put%>
+  
+  <span class="tag-pad glyphicon glyphicon-tags"></span>
+  <% @post.tags.each do |tag| %>
+    <span class="label label-default"><%= tag.category %></span>
+  <% end %>
+  
+  </h1>
 
-
-<span class="tag-pad glyphicon glyphicon-tags"></span>
-<% @post.tags.each do |tag| %>
-  <span class="label label-default"><%= tag.category %></span>
-<% end %>
-
-
-<h1>UPVOTES: <%= @post.get_upvotes.size %></h1>
-
-<p>
-  <strong>name:</strong>
-  <%= @post.name %>
-</p>
-
-<p>
-  <strong>content:</strong>
-  <%= raw @post.content %>
-</p>
- 
-<h2>Comments</h2>
-<% @post.comments.each do |comment| %>
   <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
+    <strong>name:</strong>
+    <%= @post.name %>
   </p>
- 
+   
   <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
+    <strong>content:</strong>
+    <%= raw @post.content %>
   </p>
-<% end %>
- 
-<h2>Add a comment:</h2>
-<%= form_for([@post, @post.comments.build]) do |f| %>
-  <br>
+  
+  <h2>Add a comment:</h2>
+  <%= form_for([@post, @post.comments.build]) do |f| %>
+    <br>
+    <br>
+    <p>
+      <%= f.label :body %>
+      <%= f.text_area :body %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
 
+  <h2>Comments</h2>
+  <% @post.comments.each do |comment| %>
+   
+    <p>
+      <strong>Comment:</strong>
+      <%= comment.body %>
+    </p>
+  <% end %>
+   
+ 
   <%= link_to 'Edit', edit_post_path(@post) %> |
   <%= link_to 'Back', posts_path %>
