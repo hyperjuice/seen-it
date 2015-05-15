@@ -1,27 +1,20 @@
-<div class="row">  <!-- row -->
+<div class="row">
 
-  <h1>Seen it: <%= @post.get_upvotes.size %></h1>
-  <div class="votes">  
+  <div class="votes">
+    <%= @post.get_upvotes.size %>
+  </div>
 
-      <%= link_to image_tag("http://i.imgur.com/WE61y1y.png?1"), like_post_path, method: :put%>
+  <div class="eyeballs">
+    <%= link_to image_tag("eyeball-small.png"), like_post_path(@post), method: :put %>
+    <!-- also located at http://i.imgur.com/WE61y1y.png?1 -->
+  </div>
 
-  </div> <!-- votes div -->
-  
-  </h1>
-  <p>
-    <strong>name:</strong>
-    <%= @post.name %>
-  </p> 
-  <p>
-    <strong>content:</strong>
-    <%= raw @post.content %>
-  </p>
   <div class ="context">
 
     <div class="panel panel-default">
 
       <div class="panel-heading">
-        <a href="<%= @post.link %>" target="_blank"><%= @post.name %></a>
+        <a href="<%= @post.link %>" target="_blank"><%= @post.name %></a> <span class="glyphicon glyphicon-link"></span>
       </div>  
 
       <div class="panel-body">
@@ -34,30 +27,36 @@
         <% @post.tags.each do |tag| %>
           <span class="label label-default"><%= tag.category %></span>
         <% end %>
-    </div>
-  </div>
-</div>
-</div>
 
-  <h2>Add a comment:</h2>
-  <%= form_for([@post, @post.comments.build]) do |f| %>
-    <p>
-      <%= f.label :body %>
-      <%= f.text_area :body %>
-      </p>
-      <p>
-      <%= f.submit %>
-    </p>
-  <% end %>
+        <br><br>
+        <ul>
+          <li>Do you have a solution?</li>
+          <li>Have you seen a solution? What's the URL?</li>
+          <li>Use HTML to display images and markup text</li>
+          <li>Are you angry? Want to talk about it?</li>
+        </ul>
+        <%= form_for([@post, @post.comments.build]) do |f| %>
 
-  <h2>Read the Comments:</h2>
-    <% @post.comments[0...(@post.comments.length - 1)].each do |comment| %>
-    <p>
-      <strong>Comment:</strong>
-        <%= comment.body %>
-    </p>
-   <% end %>
+          <p><%= f.text_area :body, :size => "30x10" %></p>
+          <p><%= f.submit %></p>
 
-  <%= link_to 'Edit', edit_post_path(@post) %> |
-  <%= link_to 'Back', posts_path %>
+        <% end %>
+
+          <% @post.comments[0...(@post.comments.length - 1)].each do |comment| %>
+
+            <p><%= raw comment.body %></p>
+
+          <% end %>
+
+        <%= link_to 'Edit', edit_post_path(@post) %> |
+        <%= link_to 'Back', posts_path %>
  
+
+      </div> <!-- panel-body div -->
+
+    </div> <!-- panel div -->
+
+  </div> <!-- context div -->
+
+</div> <!-- row div -->
+
