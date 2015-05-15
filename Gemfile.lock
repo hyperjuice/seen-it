@@ -96,6 +96,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    pg (0.18.1)
     pundit (1.0.0)
       activesupport (>= 3.0.0)
     rack (1.6.1)
@@ -183,6 +184,7 @@ DEPENDENCIES
   jquery-rails
   js-routes
   paperclip (~> 4.2)
+  pg
   pundit
   rails (= 4.2.1)
   sass-rails (~> 5.0)
