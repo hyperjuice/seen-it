@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -44,6 +44,8 @@ gem 'paperclip', '~> 4.2'
 group :production do
   # for the push to Heroku
   gem 'pg'
+
+  gem 'rails_12factor'
 
 end
 
