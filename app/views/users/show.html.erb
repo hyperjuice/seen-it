@@ -1,32 +1,39 @@
-<h2>Profile Pictures</h2>
-<%= form_for @picture, :html => { :multipart => true } do |form| %>
-  <%= form.hidden_field :user_id, value: @user.id %>
-  <%= form.file_field :file %><br />
-  	<%= form.submit 'submit' %>
-	<% end %>
+<div class="row">
 
-<% @user.pictures.each do |picture| %>
-	<%= image_tag picture.file.url(:medium) %>
-	<%= form_for picture, url: picture_path(picture), method: "DELETE" do |f| %>
-		<%= f.submit "Delete" %>
+	<h2>Profile Pictures</h2>
+
+	<%= form_for @picture, :html => { :multipart => true } do |form| %>
+	  <%= form.hidden_field :user_id, value: @user.id %>
+	  <%= form.file_field :file %><br />
+	  	<%= form.submit 'submit' %>
+		<% end %>
+
+	<% @user.pictures.each do |picture| %>
+		<%= image_tag picture.file.url(:medium) %>
+		<%= form_for picture, url: picture_path(picture), method: "DELETE" do |f| %>
+			<%= f.submit "Delete" %>
+		<% end %>
 	<% end %>
-<% end %>
 
 <h2>Interview Questions</h2>
 
 <% @user.posts.each do |post| %>
 
-<div class="row">  <!-- row -->
 	<div class="votes">
-    <%= link_to image_tag("http://i.imgur.com/WE61y1y.png?1"), like_post_path(post), method: :put%>
+    <%= post.get_upvotes.size %>
+  </div> <!-- votes div -->
+
+  <div class="eyeballs">
+    <%= link_to image_tag("eyeball-small.png"), like_post_path(post), method: :put %>
+    <!-- also located at http://i.imgur.com/WE61y1y.png?1 -->
   </div> <!-- votes div -->
   
 	<div class ="context">
+
 		<div class="panel panel-default">
+
 			<div class="panel-heading">
-
-
-		  <a href="<%= post.link %>" target="_blank"><%= post.name %></a>
+			  <a href="<%= post.link %>" target="_blank"><%= post.name %></a>
       </div>
 
       <div class="panel-body">
@@ -40,13 +47,20 @@
         <% end %>
 
 			  <div class="meta">
+
 			    <span class>
 			      <%= link_to("Edit", edit_post_path(post)) + " |" if policy(post).edit? %>
 			      <%= link_to("Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete?" }) if policy(post).destroy? %> 
 			    </span>
-			  </div>
-			</div>  
-		</div> <!-- panel body -->
-	</div> <!--  -->
-</div>	<!-- end of row -->
+
+			  </div> <!-- meta div -->
+
+			</div> <!-- panel-body div -->
+
+		</div> <!-- panel div -->
+
+	</div> <!-- context div -->
+
+</div>	<!-- row div -->
+
 <% end %>

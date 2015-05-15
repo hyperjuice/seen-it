@@ -73,7 +73,7 @@
 }
 
 .top-graphic {
-	background-image: url("ladders.jpg");
+	background-image: url("seenit-jumbo.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -89,4 +89,12 @@
 	color: white;
 }
 
+.special-h2 {
+	margin-bottom: 0;
+}
 
+.inverse {
+	color: white;
+	background-color: black;
+	padding: 3px 6px;
+}

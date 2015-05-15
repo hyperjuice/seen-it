@@ -1,17 +1,16 @@
 <div class="jumbotron top-graphic">
-  <p class="top-message"><br><b>What got you here<br>won't get you there</b></p>
-  <p class="bot-message"><br><b>There's one more challenge to go ...</b></p>
 </div>
 
 <div class="page-header">
 
-  <h2>Have You Seen It?</h2>
+  <h2 class="special-h2">Have You <span class="inverse">Seen It?</span></h2>
+  <p>If so, let others know by clicking the eyeball next to the interview question</p>
 
 </div>
 
 <% @posts.each do |post| %>
 
-<div class="row">  <!-- row -->
+<div class="row">
 
   <div class="votes">
     <%= post.get_upvotes.size %>
@@ -27,7 +26,7 @@
     <div class="panel panel-default">
 
       <div class="panel-heading">
-        <a href="<%= post.link %>" target="_blank"><%= post.name %></a>
+        <a href="<%= post.link %>" target="_blank"><%= post.name %></a> <span class="glyphicon glyphicon-link"></span>
       </div>
 
       <div class="panel-body">
@@ -36,7 +35,7 @@
      
         <span class="tag-pad glyphicon glyphicon-tags"></span>
 
-        <% post.tags.each do |tag| %>
+        <% post.tags.uniq.each do |tag| %>
           <span class="label label-default"><%= tag.category %></span>
         <% end %>
 
