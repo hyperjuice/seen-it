@@ -1,5 +1,5 @@
 User.create!([
-  {first_name: "Darrell", last_name: "Cohn", profile_name: "darrellcohn", email: "darrellcohn@gmail.com", password: "4eDskI8%$f_", password_confirmation: "4eDskI8%$f_" encrypted_password: "$2a$10$WsyUxa27c4RLj9oJH5J24Ot7y4XNvNbl53TN76E9y6tqFbiVVH6cW", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 3, current_sign_in_at: "2015-05-21 02:10:24", last_sign_in_at: "2015-05-20 20:33:51", current_sign_in_ip: "::1", last_sign_in_ip: "::1"}
+  {first_name: "Darrell", last_name: "Cohn", profile_name: "darrellcohn", email: "darrellcohn@gmail.com", password: "4eDskI8%$f_", password_confirmation: "4eDskI8%$f_", encrypted_password: "$2a$10$WsyUxa27c4RLj9oJH5J24Ot7y4XNvNbl53TN76E9y6tqFbiVVH6cW", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 3, current_sign_in_at: "2015-05-21 02:10:24", last_sign_in_at: "2015-05-20 20:33:51", current_sign_in_ip: "::1", last_sign_in_ip: "::1"}
 ])
 Post.create!([
   {name: "Lowest common Ancestor (http://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/)", content: "Lowest common Ancestor (http://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/)", user_id: 1, difficulty: "", link: "http://www.geeksforgeeks.org/top-25-interview-questions/", tag_id: nil},
