@@ -24,7 +24,7 @@
 
         <span class="tag-pad glyphicon glyphicon-tags"></span>
   
-        <% @post.tags.each do |tag| %>
+        <% @post.tags.uniq.each do |tag| %>
           <span class="label label-default"><%= tag.category %></span>
         <% end %>
 
